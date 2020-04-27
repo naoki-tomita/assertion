@@ -1,18 +1,22 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - 'v*'
+  release:
+    types: [created]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - run: echo ${{ github.event }}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
+          registry-url: "https://registry.npmjs.org"
       - run: yarn
         name: Resolve dependency
-      -
+      - run: npm publish --new-version ${{}}
+        name: Release npmjs
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

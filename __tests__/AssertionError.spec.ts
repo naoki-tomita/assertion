@@ -7,5 +7,5 @@ describe("AssertionError", () => {
     } catch (e) {
       expect(e instanceof AssertionError).toBe(true);
     }
-  })
+  });
 });

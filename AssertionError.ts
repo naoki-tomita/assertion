@@ -20,6 +20,6 @@ export class AssertionError implements Error {
   }
 
   toString() {
-    return this.stack
+    return this.stack;
   }
 }

@@ -1,5 +1,9 @@
 import { AssertionError } from "./AssertionError";
-import { lazyDeepEquals, leftArrayIncludesRightArray, deepEquals } from "./Comparator";
+import {
+  lazyDeepEquals,
+  leftArrayIncludesRightArray,
+  deepEquals,
+} from "./Comparator";
 
 export function expect(actual: any) {
   return {
@@ -57,7 +61,7 @@ but was: ${JSON.stringify(items, null, "  ")}`,
             throw new Error("not implemented");
           }
         },
-      }
+      },
     },
     deepEquals(expected: any) {
       if (!deepEquals(actual, expected)) {
@@ -81,7 +85,7 @@ but was: ${JSON.stringify(actual, null, "  ")}`,
             actual,
           });
         }
-      }
-    }
-  }
+      },
+    },
+  };
 }
