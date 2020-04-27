@@ -1,6 +1,8 @@
 name: Release
 
 on:
+  push:
+    branches: [master]
   release:
     types: [created]
 
@@ -16,7 +18,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: yarn
         name: Resolve dependency
-      - run: npm publish --new-version ${{}}
-        name: Release npmjs
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      # - run: npm publish --new-version ${{}}
+      #   name: Release npmjs
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
