@@ -15,7 +15,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: yarn
         name: Resolve dependency
-      - run: npm publish --new-version object-assertion@${{ github.event.release.tag_name }}
+      - run: yarn publish --new-version ${{ github.event.release.tag_name }}
         name: Release npmjs
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
