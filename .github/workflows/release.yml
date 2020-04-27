@@ -8,7 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ github.event.release.tag_name }}
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
@@ -16,7 +15,9 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: yarn
         name: Resolve dependency
-      # - run: npm publish --new-version ${{}}
-      #   name: Release npmjs
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: yarn build
+        name: Build library
+      - run: npm publish --new-version ${{ github.event.release.tag_name }}
+        name: Release npmjs
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
